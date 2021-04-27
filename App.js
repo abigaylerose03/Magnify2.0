@@ -20,6 +20,7 @@ import PrayerWarrior from './PrayerWarrior';
 import MiscScreen from './MiscScreen';
 import Maggie from './Maggie'; // the chatbot
 import GameScreen from './GameScreen'; // the current game screen
+import GameScreenChooser from './GameScreenChooser'
 import HelpScreen from './HelpScreen'; // sos 
 import UserProfile from './UserProfile'; // user profile
 import Entries from './Entries'; // journal entries
@@ -77,9 +78,10 @@ const App = () => {
             screenOptions={{
             unmountOnBlur: true,
             }}>
-            <Stack.Screen name="Onboarding" component={OnboardingScreen} />
+            <Stack.Screen title="Onboarding" name="Onboarding" component={OnboardingScreen} />
             <Stack.Screen name="Home" component={HomeScreen} />
             <Stack.Screen name="Login" component={Login} />
+            <Stack.Screen title="Choose Your Background" name="GameScreenChooser" component={GameScreenChooser} />
 
           </Stack.Navigator>
       </NavigationContainer>
@@ -92,9 +94,10 @@ const App = () => {
           screenOptions={{
           unmountOnBlur: true,
           }}>
-          <Stack.Screen name="Onboarding" component={OnboardingScreen} />
           <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="Onboarding" component={OnboardingScreen} />
            <Stack.Screen name="Login" component={Login} />
+           <Stack.Screen title="Choose Your Background" name="GameScreenChooser" component={GameScreenChooser} />
         </Stack.Navigator>
     </NavigationContainer>
   );
