@@ -43,10 +43,14 @@ import { createStackNavigator } from 'react-navigation-stack';
 
 const { height, width } = Dimensions.get('window');
 
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+
+
 const quotes = ["It's okay not to be okay as long as you are not giving up!", "Money doesn't always buy happiness", "Surround yourself with people who uplift you who motivate and inspire you to be the better version of yourself.",
 "Be thankful for what you have and you will end up having more than you thought!", "The best way to predict the future is to create it!", "Being productive does not mean you are lazy! Take breaks!", "Sometimes in tragedy, you will find your life's purpose.", "They say time changes things, but you actually have to change them yourself. - Andy Warhol", "Love what you have before life teaches you to love what you lost.", "Give yourself permission to be hopeful for what's next because that's something to reach for.", "You owe it to yourself to become everything you've ever dreamed of being", "Searing for that one person to change your life? Look in the mirror!", "Change your thoughts and you change your world - Norman Vincent Peale", "You don't need anyone else's approval.", "The world needs more amazing people like you", "Love yourself, or nobody will!", "Act as if what you do makes a difference, IT DOES. - William James", "Always do your best.", "You never know when a moment becomes a memory.", "When you start seeing your worth, you'll find it harder to stay around people who don't", "Don't count the days, make the days count - Muhammad Ali", "One day, these 5ams will make you a legend.", "Autumn exists to remind us that things must end to begin again", "You don't need anyone else's approval, go for it!"];
 
-export default class HomeScreen extends Component {
+const HomeScreen = ({navigation}) => {
    constructor(props) {
     super(props);
       console.disableYellowBox = true;
@@ -154,13 +158,9 @@ export default class HomeScreen extends Component {
           scrollEnabled={scrollEnabled}
           onContentSizeChange={this.onContentSizeChange}>
 
-      
-
-
       <ImageBackground source={require('/Users/abigaylepeterson/MagnifyWellness2/components/img/home.png')} resizeMode='cover' style={{width: '100%', height: 1000}}>
 
-
-            <Text style={styles.headText}>{rand}</Text>
+          <Text style={styles.headText}>{rand}</Text>
             <TouchableHighlight style={styles.quoteBtn} onPress={() => this.saveQuote(rand)}>
               <View>
                 <Text style={styles.btnQuoteText}>Save Quote</Text>
@@ -181,9 +181,7 @@ export default class HomeScreen extends Component {
                 </View>
               </TouchableHighlight>
             </View>
-
-
-            
+  
             <SafeAreaView style={{position: 'relative', top: 150}}>
               <View>
                 <Text style={styles.rowText}>Practice Mindfulness</Text>
@@ -195,7 +193,6 @@ export default class HomeScreen extends Component {
                     </CardItem>
                     
                     <Icon style={styles.cardIcon} name="refresh-outline" ios="ios-refresh" android="md-refresh" />
-
                   </Card>
 
                    <Card style={styles.card}>
@@ -214,8 +211,7 @@ export default class HomeScreen extends Component {
                 </View>
               </View>
 
-
-              <Text style={styles.rowText}>Find Your Community</Text>
+            <Text style={styles.rowText}>Find Your Community</Text>
               <View style={{flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between'}}>
                 <Card style={styles.card}>
                   <CardItem header button style={{backgroundColor: '#f5f5f5'}} onPress={() => Actions.maggie()}>
@@ -249,18 +245,13 @@ export default class HomeScreen extends Component {
                 </Card>
             
                   <Card style={styles.cardBig}>
-                  <CardItem header button style={{backgroundColor: '#f5f5f5'}} onPress={() => Actions.game()}>
+                  <CardItem header button style={{backgroundColor: '#f5f5f5'}} onPress={() => navigation.navigate("GameScreenChooser")}>
                     <Text style={styles.cardText}>Play Maggie's Adventure Game!</Text>
                   </CardItem>
                    <Icon style={styles.cardIcon} name="rocket" ios="ios-rocket" android="md-rocket" />
                 </Card>
               </View>
             </SafeAreaView>
-
-            
-
-
-        
       </ImageBackground>
       </ScrollView>
     </SafeAreaView>
@@ -268,3 +259,5 @@ export default class HomeScreen extends Component {
     );
   }
 }
+
+export default HomeScreen;
